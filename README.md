@@ -113,7 +113,9 @@ As a user, I can to see servicers who are available
   * I'll email you the password for the testing account after it's been made
   
 * (1 point) Clinet side form validation  
-* (3 points) Angular  
+  * For eg.. checks that all required fields are filled out or checks out of range value
+* (3 points) Angularjs 
+  * Frontend Framework
 * (3 points) In-App messaging
   * Using Twilio's APIs
   
