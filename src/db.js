@@ -19,3 +19,7 @@ const servicePSchema = new Schema({
    reviews: [{ type: Schema.Types.ObjectId, ref:'Review'}]
 });
 
+//add models and connect db
+mongoose.model('UserSR', serviceRSchema);
+mongoose.model('UserSP', servicePScehma);
+mongoose.connect('mongodb://localhost/dayswork', {useNewUrlParser: true});
