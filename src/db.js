@@ -1,25 +1,41 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const serviceRSchema = new Schema({
+const userSchema = new Schema({
    fName: String,
    lName: String,
    email: String,
    phone: String,
-   posts: [{ type: Schema.Types.ObjectId, ref:'Posts'}]
+   trips: [{ type: Schema.Types.ObjectId, ref:'Trips'}],
+   healthInfo: [{type: Schema.Types.ObjectId, ref: 'HealthInfo'}],
+   trans: [{type: Schema.Types.ObjectId, ref: 'Transaction'}]
 });
 
-const servicePSchema = new Schema({
-   fName: String,
-   lName: String,
-   email: String,
-   phone: String,
-   experience: [{ type: Schema.Types.ObjectId, ref:'Experience'}],
-   reference: [{ type: Schema.Types.ObjectId, ref:'Reference'}],
-   reviews: [{ type: Schema.Types.ObjectId, ref:'Review'}]
+const tripSchema = new Schema({
+   title: String,
+   start: Date,
+   end: Date,
+   dest: String,
+   users:[{ type: Schema.Types.ObjectId, ref:'User'}]
+});
+
+const healthSchema = new Schema({
+   name: String,
+   pres: String,
+   instr: String
+});
+
+const countrySchema = new Schema({
+   name: String,
+   police: String,
+   fire: String,
+   hospital: String,
+   lang: String
 });
 
 //add models and connect db
-mongoose.model('UserSR', serviceRSchema);
-mongoose.model('UserSP', servicePScehma);
-mongoose.connect('mongodb://localhost/dayswork', {useNewUrlParser: true});
+mongoose.model('User', userSchema);
+mongoose.model('Trip', tripScehma);
+mongoose.model('HealthInfo', healthSchema);
+mongoose.model('Country', countrySchema);
+mongoose.connect('mongodb://localhost/wanderlust360', {useNewUrlParser: true});
