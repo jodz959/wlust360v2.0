@@ -83,7 +83,7 @@ Shows all transactions added by user
 ![health](docs/imgs/health.JPG)  
 Shows local emergency numbers and user's general health info
 
-##SiteMap
+## SiteMap
 
 Here's a draft of the sitemap  
 ![site_map](docs/imgs/site_map.JPG)  
