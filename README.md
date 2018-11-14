@@ -110,8 +110,8 @@ As a user, I want to see suggestions of activities
 * (3 points) Angularjs 
   * Frontend Framework
 * (2 points) API's
- * Trip Advisor/Foursquare
- * Venmo/Cash App
+  * Trip Advisor/Foursquare
+  * Venmo/Cash App
   
  ## [App.js](src/app.js)  
  
