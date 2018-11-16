@@ -1,0 +1,13 @@
+.text-input {
+   padding: 5px;
+   margin: 5px;
+   width: 50%;
+}
+
+.btn-lgn {
+   margin: 3px;
+}
+
+body {
+   background-color: orange;
+}

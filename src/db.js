@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const URLSlugs = require('mongoose-url-slugs');
 
 const userSchema = new Schema({
    fName: String,
@@ -18,6 +19,7 @@ const tripSchema = new Schema({
    dest: String,
    users:[{ type: Schema.Types.ObjectId, ref:'User'}]
 });
+tripSchema.plugin(URLSlugs('title start'));
 
 const healthSchema = new Schema({
    name: String,
@@ -35,7 +37,7 @@ const countrySchema = new Schema({
 
 //add models and connect db
 mongoose.model('User', userSchema);
-mongoose.model('Trip', tripScehma);
+mongoose.model('Trip', tripSchema);
 mongoose.model('HealthInfo', healthSchema);
 mongoose.model('Country', countrySchema);
 mongoose.connect('mongodb://localhost/wanderlust360', {useNewUrlParser: true});
