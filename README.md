@@ -117,3 +117,5 @@ As a user, I want to see suggestions of activities
  
 (___TODO__: list any tutorials/references/etc. that you've based your code off of_)
 
+[Local Authentication with Express 4.x and Passport.js](https://medium.com/@nohkachi/local-authentication-with-express-4-x-and-passport-js-745eba47076d)
+
