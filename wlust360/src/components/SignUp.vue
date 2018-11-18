@@ -1,6 +1,6 @@
 <template lang="pug">
    div.container
-      Navbar(v-bind:user="user")
+      Navbar
       div.register-form
          div.layout-title
             h2 Sign Up
@@ -11,7 +11,7 @@
                   div.error-text
                      ul.error-ul
                         li(v-for="error in errors") {{ error }}
-            form.login(@submit="checkErrors" novalidate="true")
+            form.login(@submit="checkErrors" novalidate="true" method="post")
                input.text-input.input-box(v-model="form.fName" name="fName" placeholder="First Name" type="text" required)
                br
                input.text-input.input-box(v-model="form.lName" name="lName" placeholder="Last Name" type="text" required)
@@ -26,7 +26,7 @@
                br
                button.btn-lgn.btn.btn-success(type="submit") Sign Up
             div.link-div
-               a.links(href="/login") Login
+               router-link.links(to="/login") Login
                span |
                a.links(href="forgot-password") Forgot Password
 
@@ -50,7 +50,7 @@ export default {
   },
   data () {
     return {
-      user: 'Jane',
+      user: '',
       errors: [],
       form: {
         fName: '',
