@@ -1,49 +1,58 @@
 <template lang="pug">
-   div.register-form
-      div.layout-title
-         h2 Sign Up
-         div.errors(v-if="errors.length")
-            img(src="./../assets/warning.png")
-            p
-               b Please correct the following:
-               div.error-text
-                  ul.error-ul
-                     li(v-for="error in errors") {{ error }}
-         form.login(@submit="checkErrors" novalidate="true")
-            input.text-input.input-box(v-model="userModel.fName" name="fName" placeholder="First Name" type="text" required)
-            br
-            input.text-input.input-box(v-model="userModel.lName" name="lName" placeholder="Last Name" type="text" required)
-            br
-            input.text-input.input-box(v-model="userModel.email" name="email" placeholder="Email" type="email" required)
-            br
-            input.text-input.input-box(v-model="userModel.password" name="password" autocomplete="off" placeholder="Password" type="password" required)
-            br
-            input.text-input.input-box(v-model="userModel.c_password" autocomplete="off" placeholder="Confirm Password" type="password" required)
-            br
-            v-select.select-v(v-model="userModel.city" :options="options" label="city" name="home" placeholder="Select City and State")
-            br
-            button.btn-lgn.btn.btn-success(type="submit") Sign Up
-         div.link-div
-            a.links(href="/login") Login
-            span |
-            a.links(href="forgot-password") Forgot Password
+   div.container
+      Navbar(v-bind:user="user")
+      div.register-form
+         div.layout-title
+            h2 Sign Up
+            div.errors(v-if="errors.length")
+               img(src="./../assets/warning.png")
+               p
+                  b Please correct the following:
+                  div.error-text
+                     ul.error-ul
+                        li(v-for="error in errors") {{ error }}
+            form.login(@submit="checkErrors" novalidate="true")
+               input.text-input.input-box(v-model="form.fName" name="fName" placeholder="First Name" type="text" required)
+               br
+               input.text-input.input-box(v-model="form.lName" name="lName" placeholder="Last Name" type="text" required)
+               br
+               input.text-input.input-box(v-model="form.email" name="email" placeholder="Email" type="email" required)
+               br
+               input.text-input.input-box(v-model="form.password" name="password" autocomplete="off" placeholder="Password" type="password" required)
+               br
+               input.text-input.input-box(v-model="form.c_password" autocomplete="off" placeholder="Confirm Password" type="password" required)
+               br
+               v-select.select-v(v-model="form.city" :options="options" label="city" name="home" placeholder="Select City and State")
+               br
+               button.btn-lgn.btn.btn-success(type="submit") Sign Up
+            div.link-div
+               a.links(href="/login") Login
+               span |
+               a.links(href="forgot-password") Forgot Password
 
-      div.credit
-         | Icons made by
-         a(href='https://www.freepik.com', title='Freepik') Freepik
-         |  from
-         a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
-         |  is licensed by
-         a(href='http://creativecommons.org/licenses/by/3.0/', title='Creative Commons BY 3.0', target='_blank') CC 3.0 BY
+         div.credit
+            | Icons made by
+            a(href='https://www.freepik.com', title='Freepik') Freepik
+            |  from
+            a(href='https://www.flaticon.com/', title='Flaticon') www.flaticon.com
+            |  is licensed by
+            a(href='http://creativecommons.org/licenses/by/3.0/', title='Creative Commons BY 3.0', target='_blank') CC 3.0 BY
 </template>
 
 <script>
+import Navbar from './Navbar';
+import axios from 'axios';
+import url from './../config/apiUrls'
 export default {
   name: 'SignUp',
+  components: {
+    Navbar
+  },
   data () {
     return {
+      user: 'Jane',
       errors: [],
-      userModel: {
+      form: {
         fName: '',
         lName: '',
         email: '',
@@ -150,35 +159,48 @@ export default {
     /* eslint-disable semi */
     checkErrors: function (e) {
       this.errors = [];
-      if (this.userModel.password !== this.userModel.c_password) {
+      e.preventDefault();
+      if (this.form.password !== this.form.c_password) {
         this.errors.push('Passwords do not match');
       }
-      if (this.userModel.password.length < 8) {
-        this.errors.push('Passwords must have at least 8 characters');
+      if (this.form.password.length < 8 || this.form.password.length > 20) {
+        this.errors.push('Passwords must be between 8 and 20 characters');
       }
-      if (this.userModel.fName === '') {
+      if (this.form.fName === '') {
         this.errors.push('First name is required');
       }
-      if (this.userModel.lName === '') {
+      if (this.form.lName === '') {
         this.errors.push('Last name is required');
       }
-      if (this.userModel.password === '') {
+      if (this.form.password === '') {
         this.errors.push('Password is required');
       }
-      if (this.userModel.c_passowrd === '') {
+      if (this.form.c_passowrd === '') {
         this.errors.push('Password confirmation is required');
       }
-      if (!this.validEmail(this.userModel.email)) {
+      if (!this.validEmail(this.form.email)) {
         this.errors.push('Enter a valid email');
       }
       if (!this.errors.length) {
-        return true;
+        console.log('No errors');
+        this.register();
       }
-      e.preventDefault();
     },
     validEmail: function (email) {
       const re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       return re.test(email);
+    },
+    register: function () {
+      console.log('IN register function', url.signup);
+      axios.post(url.signup, this.form)
+        .then(res => {
+          if (res.data.success) {
+            console.log(res.data);
+            this.$router.push({
+              path: '/' 
+            });
+          }
+        });
     }
   }
 }

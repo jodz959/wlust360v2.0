@@ -14,6 +14,7 @@ router.get('/test', (req, res) => {
 });
 
 router.post('/signup', (req, res, next) => {
+   console.log('IN SIGN UP');
    passport.authenticate('local-signup', (err, user, info) => {
       if (err) {
          return next(err);
@@ -26,11 +27,13 @@ router.post('/signup', (req, res, next) => {
             return res.json({login: false});
          } else {
             const nUser = {
+               success: true,
                email: user.email,
                home: user.home,
                fName: user.fName,
                lName: user.lName
             }
+            console.log('LOGIN SUCCESSFUL SENDING BACK USER');
             return res.json(nUser);
          }
       });
@@ -51,6 +54,7 @@ router.post('/login', (req, res, next) => {
             return res.json({login: false});
          } else {
             const nUser = {
+               success: true,
                email: user.email,
                home: user.home,
                fName: user.fName,

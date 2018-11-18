@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
@@ -11,7 +12,10 @@ const dbURL = config.dbURL;
 mongoose.connect(dbURL, {useNewUrlParser: true});
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
-
+app.use(cors({
+   credentials: true,
+   origin: true
+}));
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
