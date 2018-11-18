@@ -54,7 +54,7 @@ module.exports = {
       {
          test:/\.pug$/,
          loader: 'pug-plain-loader'
-      }
+      },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',

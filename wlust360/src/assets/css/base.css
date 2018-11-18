@@ -4,10 +4,59 @@
    width: 50%;
 }
 
+.input-box {
+   border: 1px solid rgba(60,60,60,.26);
+   background: None;
+   border-radius: 4px;
+   padding: 10px;
+}
+
 .btn-lgn {
    margin: 3px;
 }
 
+.select-v {
+   margin: 5px;
+   width: 50%;
+   display: inline-block;
+}
+
+.links {
+   margin: 10px;
+   padding: 5px;
+}
+
+.link-div {
+   margin: 10px auto;
+   display: inline-block;
+}
+
+.error-ul {
+   padding: 0px;
+   margin: 0px;
+   margin-left: 10px;
+   list-style-type: disclosure-closed;
+}
+
+.error-text {
+   text-align: left;
+}
+
+.errors {
+   background-color: #f4bcbf;
+   display: inline-block;
+   padding: 22px;
+   border-radius: 5px;
+}
+
+.credit {
+   float: bottom;
+   display: inline-block;
+   font-size: 11px;
+   margin: 15px;
+   padding: 10px;
+}
+
 body {
-   background-color: orange;
+   background-color: white;
 }
