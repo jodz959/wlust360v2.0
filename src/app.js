@@ -6,7 +6,8 @@ const session = require('express-session');
 const app = express();
 
 const config = require('./config/config');
-const routes = require('./routes/auth');
+const authRoutes = require('./routes/auth');
+const tripRoutes = require('./routes/trip');
 const dbURL = config.dbURL;
 
 mongoose.connect(dbURL, {useNewUrlParser: true});
@@ -25,7 +26,8 @@ app.use(session({
    saveUninitialized: true
 }));
 
-app.use('/', routes);
+app.use('/', authRoutes);
+app.use('/api/trip', tripRoutes);
 
 app.use(function(req, res, next) {
    res.locals.user = req.session.user;
