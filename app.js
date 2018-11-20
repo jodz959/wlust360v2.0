@@ -5,19 +5,19 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
 
-const config = require('./config/config');
-const authRoutes = require('./routes/auth');
-const tripRoutes = require('./routes/trip');
+const config = require('./scr/config/config');
+const authRoutes = require('./scr/routes/auth');
+const tripRoutes = require('./scr/routes/trip');
 const dbURL = config.dbURL;
 
 mongoose.connect(dbURL, {useNewUrlParser: true});
 app.set('view engine', 'pug');
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/src/views');
 app.use(cors({
    credentials: true,
    origin: true
 }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/src/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
