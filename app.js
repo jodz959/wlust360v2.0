@@ -57,4 +57,8 @@ app.get('/home', (req, res) => {
 app.get('*', (req, res) => {
    res.status(404).json({message: 'BAD REQUEST'});
 });
-app.listen(3000);
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+   console.log('Listening on PORT : ', PORT);
+});
