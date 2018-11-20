@@ -3,13 +3,14 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/users');
 const Trip = require('../models/trips');
 const config = require('../config/config');
+const secret= process.env.secret || config.secret;
 
 function createTrip(req, res) {
    const token = req.headers['x-access-token'];
    if (!token) {
       return res.status(401).json({ auth: false, message: 'No auth'});
    }
-   jwt.verify(token, config.secret, (err, decoded) => {
+   jwt.verify(token, secret, (err, decoded) => {
       if(err) {
          return res.status(500).json({ auth: false, message: "Auth failed"});
       }
@@ -44,7 +45,7 @@ function getTrips(req, res) {
    if (!token) {
       return res.status(401).json({ auth: false, message: 'No auth'});
    }
-   jwt.verify(token, config.secret, (err, decoded) => {
+   jwt.verify(token, secret, (err, decoded) => {
       if(err) {
          return res.status(500).json({ auth: false, message: "Auth failed"});
       }

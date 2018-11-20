@@ -8,9 +8,9 @@ const app = express();
 const config = require('./src/config/config');
 const authRoutes = require('./src/routes/auth');
 const tripRoutes = require('./src/routes/trip');
-const dbURL = config.dbURL;
+const dbURL = process.env.MONGODB_URI || config.dbURL;
 
-mongoose.connect(process.env.MONGODB_URI || dbURL, {useNewUrlParser: true});
+mongoose.connect(dbURL, {useNewUrlParser: true});
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/src/views');
 app.use(cors({
@@ -21,7 +21,7 @@ app.use(express.static(__dirname + '/src/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
-   secret: config.secret,
+   secret: config.secret || process.env.secret,
    resave: false,
    saveUninitialized: true
 }));

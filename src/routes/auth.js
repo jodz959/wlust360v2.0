@@ -6,6 +6,7 @@ const config = require('../config/config');
 const router = express.Router();
 
 const User = require('../models/users');
+const secret = process.env.secret || config.secret;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
@@ -39,7 +40,7 @@ router.post('/signup', (req, res, next) => {
                lName: user.lName */
             }
             //implement jwtoken 
-            nUser.token = jwt.sign({ id: user._id}, config.secret, { 
+            nUser.token = jwt.sign({ id: user._id}, secret, { 
                expiresIn: 86400 //24 hours
             });
  
@@ -71,7 +72,7 @@ router.post('/login', (req, res, next) => {
                fName: user.fName,
                lName: user.lName */
             }
-            nUser.token = jwt.sign({ id: user._id}, config.secret, { 
+            nUser.token = jwt.sign({ id: user._id}, secret, { 
                expiresIn: 86400 //24 hours
             });
             return res.status(200).json(nUser);
@@ -85,7 +86,7 @@ router.get('/me', (req, res) => {
    if (!token) {
       return res.status(401).json({ auth: false, message: 'No auth'});
    }
-   jwt.verify(token, config.secret, (err, decoded) => {
+   jwt.verify(token, secret, (err, decoded) => {
       if(err) {
          return res.status(500).json({ auth: false, message: "Auth failed"});
       } 
