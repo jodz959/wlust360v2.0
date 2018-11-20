@@ -29,20 +29,23 @@ app.use(session({
 app.use('/', authRoutes);
 app.use('/api/trip', tripRoutes);
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
    res.locals.user = req.session.user;
    next();
 });
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
    res.render('index');
 }); 
 
-app.get('/home', function(req, res){
+app.get('/home', (req, res) => {
    res.json({
       id: "One Two",
       title: "Testing"
    });
 });
 
+app.get('*', (req, res) => {
+   res.status(404).json({message: 'BAD REQUEST'});
+});
 app.listen(3000);
