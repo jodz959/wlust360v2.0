@@ -75,10 +75,13 @@ export default {
       console.log('IN login function', url.login);
       axios.post(url.login, this.form)
         .then(res => {
-          if (res.data.success) {
+          if (res.data.auth) {
             console.log(res.data);
+            this.$session.start();
+            this.$session.set('jwt', res.data.token);
+            //this.$http.headers.common['Authorization'] = 'Bearer' + res.data.token
             this.$router.push({
-              path: '/'
+              name: 'Dashboard'
             });
           }
         });

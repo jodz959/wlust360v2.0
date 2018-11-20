@@ -12,10 +12,8 @@
                      a.nav-link(href='#') Trips
                   li.nav-item.active
                      a.nav-link(href='#') Profile
-                  li.nav-item(v-if="user")
+                  li.nav-item
                      a.btn.btn-secondary(href='#') Logout
-                  li.nav-item(v-else)
-                     a.btn.btn-secondary(href='#') Login/SignUp
 </template>
 
 <script>
