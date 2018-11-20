@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
-const User = require('../models/users');
-const Trip = require('../models/trips');
+const User = require('./../models/users');
+const Trip = require('./../models/trips');
 
 let secret;
 if (process.env.NODE_ENV === 'production') {

@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const passport = require('../config/passport');
+const passport = require('./../config/passport');
 const router = express.Router();
 
-const User = require('../models/users');
+const User = require('./../models/users');
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
