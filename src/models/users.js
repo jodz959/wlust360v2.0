@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const URLSlugs = require('mongoose-url-slugs');
-const bcrypt = require('bcryptjs');
+//const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt-nodejs');
 
 //get saltRounds
 let saltRounds;
@@ -24,11 +25,16 @@ const userSchema = new Schema({
    trans: [{type: Schema.Types.ObjectId, ref: 'Transaction'}]
 });
 
+/*
 userSchema.methods.generateHash = function(password) {
    console.log('SALT ROUNDS IS ', saltRounds);
    return bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds), null);
-}
+} */
 
+userSchema.methods.generateHash = function(password) {
+   console.log('SALT ROUNDS IS ', saltRounds);
+   return bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds));
+}
 userSchema.methods.validpw = function(password) {
    return bcrypt.compareSync(password, this.pwHash);
 }
