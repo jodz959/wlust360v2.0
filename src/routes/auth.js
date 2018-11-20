@@ -48,7 +48,7 @@ router.post('/signup', (req, res, next) => {
             });
  
             console.log('LOGIN SUCCESSFUL SENDING BACK USER');
-            return res.json(nUser);
+            return res.status(200).json(nUser);
          }
       });
    
