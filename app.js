@@ -5,10 +5,19 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
 
-const config = require('./src/config/config');
 const authRoutes = require('./src/routes/auth');
 const tripRoutes = require('./src/routes/trip');
-const dbURL = process.env.MONGODB_URI || config.dbURL;
+
+let dbURL;
+let secret;
+if (process.env.NODE_ENV === 'production') {
+   dbURL = process.env.MONGODB_URI;
+   secret = process.env.secret;
+} else {
+   const config = require('./src/config/config');
+   dbURL = config.dbURL;
+   secret = config.secret;
+}
 
 mongoose.connect(dbURL, {useNewUrlParser: true});
 app.set('view engine', 'pug');
@@ -21,7 +30,7 @@ app.use(express.static(__dirname + '/src/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
-   secret: config.secret || process.env.secret,
+   secret: secret,
    resave: false,
    saveUninitialized: true
 }));

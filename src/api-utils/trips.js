@@ -2,8 +2,14 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('../models/users');
 const Trip = require('../models/trips');
-const config = require('../config/config');
-const secret= process.env.secret || config.secret;
+
+let secret;
+if (process.env.NODE_ENV === 'production') {
+   secret = process.env.secret;
+} else {
+   const config = require('./../config/config');
+   secret = config.secret;
+}
 
 function createTrip(req, res) {
    const token = req.headers['x-access-token'];

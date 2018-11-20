@@ -2,17 +2,23 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
 const passport = require('../config/passport');
-const config = require('../config/config');
 const router = express.Router();
 
 const User = require('../models/users');
-const secret = process.env.secret || config.secret;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.use(passport.initialize());
 router.use(passport.session());
+
+let secret;
+if (process.env.NODE_ENV === 'production') {
+   secret = process.env.secret;
+} else {
+   const config = require('./../config/config');
+   secret = config.secret;
+}
 
 router.get('/test', (req, res) => {
    res.json({test: 'test success'});
@@ -86,7 +92,7 @@ router.get('/me', (req, res) => {
    if (!token) {
       return res.status(401).json({ auth: false, message: 'No auth'});
    }
-   jwt.verify(token, secret, (err, decoded) => {
+   jwt.verify(token, config.secret, (err, decoded) => {
       if(err) {
          return res.status(500).json({ auth: false, message: "Auth failed"});
       } 
