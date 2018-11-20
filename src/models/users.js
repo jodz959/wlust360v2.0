@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 //get saltRounds
 let saltRounds;
 if (process.env.NODE_ENV === 'production') {
-   saltRounds = process.env.saltRounds; 
+   saltRounds = ''+process.env.saltRounds; 
 } else {
    const config = require('../config/config');
    saltRounds = config.saltRounds;
@@ -25,6 +25,7 @@ const userSchema = new Schema({
 });
 
 userSchema.methods.generateHash = function(password) {
+   console.log('SALT ROUNDS IS ', saltRounds');
    return bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds), null);
 }
 
