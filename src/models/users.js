@@ -25,7 +25,7 @@ const userSchema = new Schema({
 });
 
 userSchema.methods.generateHash = function(password) {
-   console.log('SALT ROUNDS IS ', saltRounds');
+   console.log('SALT ROUNDS IS ', saltRounds);
    return bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds), null);
 }
 
