@@ -5,6 +5,8 @@ const passport = require('./../config/passport');
 const router = express.Router();
 
 const User = require('./../models/users');
+const vt = require('./../middlewares/token');
+const validateToken = vt.validateToken;
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
@@ -39,13 +41,8 @@ router.post('/signup', (req, res, next) => {
          } else {
             const nUser = {
                auth: true
-              /* email: user.email,
-               home: user.home,
-               id: user._id,
-               fName: user.fName,
-               lName: user.lName */
             }
-            //implement jwtoken 
+            //create token and return to the user 
             nUser.token = jwt.sign({ id: user._id}, secret, { 
                expiresIn: 86400 //24 hours
             });
@@ -72,12 +69,8 @@ router.post('/login', (req, res, next) => {
          } else {
             const nUser = {
                auth: true
-               /*email: user.email,
-               id: user._id,
-               home: user.home,
-               fName: user.fName,
-               lName: user.lName */
             }
+            //create token on the user object and return 
             nUser.token = jwt.sign({ id: user._id}, secret, { 
                expiresIn: 86400 //24 hours
             });
@@ -87,17 +80,17 @@ router.post('/login', (req, res, next) => {
    })(req, res, next);
 });
 
-router.get('/me', (req, res) => {
-   const token = req.headers['x-access-token'];
+router.get('/me', validateToken, (req, res) => {
+ /*  const token = req.headers['x-access-token'];
    if (!token) {
       return res.status(401).json({ auth: false, message: 'No auth'});
    }
    jwt.verify(token, config.secret, (err, decoded) => {
       if(err) {
          return res.status(500).json({ auth: false, message: "Auth failed"});
-      } 
+      } */
       
-      User.findById(decoded.id, (err, user) => {
+      User.findById(req.decoded.id, (err, user) => {
          if (err) {
             return res.status(404).json({ auth: false, message: "User Not Found" });
          }
@@ -108,7 +101,7 @@ router.get('/me', (req, res) => {
                lName: user.lName
          });
       });
-   });
+  // });
 });
 
 router.get('/logout', (req, res) => {

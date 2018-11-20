@@ -22,6 +22,8 @@ if (process.env.NODE_ENV === 'production') {
 mongoose.connect(dbURL, {useNewUrlParser: true});
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/src/views');
+
+//middlewares
 app.use(cors({
    credentials: true,
    origin: true
@@ -35,27 +37,18 @@ app.use(session({
    saveUninitialized: true
 }));
 
-app.use('/', authRoutes);
-app.use('/api/trip', tripRoutes);
-
 app.use((req, res, next) => {
    res.locals.user = req.session.user;
    next();
 });
 
-app.get('/', (req, res) => {
-   res.render('index');
-}); 
+//routes
+app.use('/', authRoutes);
+app.use('/api/trip', tripRoutes);
 
-app.get('/home', (req, res) => {
-   res.json({
-      id: "One Two",
-      title: "Testing"
-   });
-});
-
+//catch any routes not registeres
 app.get('*', (req, res) => {
-   res.status(404).json({message: 'BAD REQUEST'});
+   res.status(400).json({message: 'BAD REQUEST'});
 });
 
 const PORT = process.env.PORT || 3000;

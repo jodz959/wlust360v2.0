@@ -12,17 +12,17 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 function createTrip(req, res) {
-   const token = req.headers['x-access-token'];
+/*   const token = req.headers['x-access-token'];
    if (!token) {
       return res.status(401).json({ auth: false, message: 'No auth'});
    }
    jwt.verify(token, secret, (err, decoded) => {
       if(err) {
          return res.status(500).json({ auth: false, message: "Auth failed"});
-      }
+      } */
       console.log(req.body);
       console.log(req.body.title);
-      User.findById(decoded.id, (err, user) => {
+      User.findById(req.decoded.id, (err, user) => {
          if (err) {
             return res.status(404).json({ auth: false, message: "User Not Found" });
          } 
@@ -42,21 +42,21 @@ function createTrip(req, res) {
             }
          });
       });
-   });
+  // });
 
 }
 
 function getTrips(req, res) {
-   const token = req.headers['x-access-token'];
+/*   const token = req.headers['x-access-token'];
    if (!token) {
       return res.status(401).json({ auth: false, message: 'No auth'});
    }
    jwt.verify(token, secret, (err, decoded) => {
       if(err) {
          return res.status(500).json({ auth: false, message: "Auth failed"});
-      }
+      } */
       //get all user trips and return them
-      User.findById(decoded.id)
+      User.findById(req.decoded.id)
          .populate('trips').exec((err, result) => {
             console.log('ERRR ', err);
             console.log('TRIPS ', result);
@@ -65,7 +65,7 @@ function getTrips(req, res) {
             }
             return res.status(404).json({ message: 'Not found' });
          });
-   });
+  // });
 
 }
 
