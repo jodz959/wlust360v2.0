@@ -10,7 +10,7 @@ const authRoutes = require('./src/routes/auth');
 const tripRoutes = require('./src/routes/trip');
 const dbURL = config.dbURL;
 
-mongoose.connect(process.env.MONGODB_URI ||| dbURL, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI || dbURL, {useNewUrlParser: true});
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/src/views');
 app.use(cors({
