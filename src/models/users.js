@@ -2,7 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const URLSlugs = require('mongoose-url-slugs');
 const bcrypt = require('bcryptjs');
-const config = require('../config/config');
+
+//get saltRounds
+let saltRounds;
+if (process.env.NODE_ENV === 'production') {
+   saltRounds = process.env.saltRounds; 
+} else {
+   const config = require('../config/config');
+}
 
 const userSchema = new Schema({
    fName: String,
