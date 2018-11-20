@@ -8,7 +8,7 @@ let saltRounds;
 if (process.env.NODE_ENV === 'production') {
    saltRounds = ''+process.env.saltRounds; 
 } else {
-   const config = require('../config/config');
+   const config = require('./../config/config');
    saltRounds = config.saltRounds;
 }
 
