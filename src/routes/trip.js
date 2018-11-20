@@ -10,6 +10,7 @@ router.use(bodyParser.urlencoded({extended: true}));
 router.use(require('../middlewares/authenticated'));
 
 router.post('/create-trip', trip.createTrip);
+router.get('/get-trips', trip.getTrips);
 
 module.exports = router;
 
