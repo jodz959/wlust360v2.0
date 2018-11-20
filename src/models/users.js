@@ -9,6 +9,7 @@ if (process.env.NODE_ENV === 'production') {
    saltRounds = process.env.saltRounds; 
 } else {
    const config = require('../config/config');
+   saltRounds = config.saltRounds;
 }
 
 const userSchema = new Schema({
@@ -24,7 +25,7 @@ const userSchema = new Schema({
 });
 
 userSchema.methods.generateHash = function(password) {
-   return bcrypt.hashSync(password, bcrypt.genSaltSync(config.saltRounds), null);
+   return bcrypt.hashSync(password, bcrypt.genSaltSync(saltRounds), null);
 }
 
 userSchema.methods.validpw = function(password) {
