@@ -12,6 +12,7 @@ let dbURL;
 let secret;
 if (process.env.NODE_ENV === 'production') {
    dbURL = process.env.MONGODB_URI;
+   console.log('mongo uri is', dbURL); 
    secret = process.env.secret;
 } else {
    const config = require('./src/config/config');
