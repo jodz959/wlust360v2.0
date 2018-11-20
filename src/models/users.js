@@ -11,7 +11,7 @@ const userSchema = new Schema({
    phone: String,
    home: String,
    pwHash: String,
-   trips: [{ type: Schema.Types.ObjectId, ref:'Trips'}],
+   trips: [{ type: Schema.Types.ObjectId, ref:'Trip'}],
    healthInfo: [{type: Schema.Types.ObjectId, ref: 'HealthInfo'}],
    trans: [{type: Schema.Types.ObjectId, ref: 'Transaction'}]
 });

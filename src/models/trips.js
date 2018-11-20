@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const URLSlugs = require('mongoose-url-slugs');
 
 const tripSchema = new Schema({
+   createdBy: { type: Schema.Types.ObjectId, ref:'User'},
    title: String,
    start: Date,
    end: Date,
@@ -11,5 +12,5 @@ const tripSchema = new Schema({
 });
 
 tripSchema.plugin(URLSlugs('title start'));
-module.exports = mongoose.model('Trip', tripSchema);
+module.exports = mongoose.model('Trip', tripSchema, 'trips');
 
