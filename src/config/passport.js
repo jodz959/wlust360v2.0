@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const User = require('../models/users');
+const User = require('./../models/users');
 
 passport.serializeUser((user, done) => {
    done(null, user.id);
@@ -21,7 +21,8 @@ passport.use('local-signup', new LocalStrategy({
    }, 
    (req, username, password, done) => {
       process.nextTick(() => {
-         console.log('IN LOCAL SIGN UP');
+         console.log('IN LOCAL SIGN UP', req.body);
+         console.log(username, password);
          User.findOne({email: username}, (err, user) => {
             if(err) {
                return done(err);
