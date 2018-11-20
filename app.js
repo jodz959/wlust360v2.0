@@ -5,12 +5,12 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
 
-const config = require('./scr/config/config');
-const authRoutes = require('./scr/routes/auth');
-const tripRoutes = require('./scr/routes/trip');
+const config = require('./src/config/config');
+const authRoutes = require('./src/routes/auth');
+const tripRoutes = require('./src/routes/trip');
 const dbURL = config.dbURL;
 
-mongoose.connect(dbURL, {useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI ||| dbURL, {useNewUrlParser: true});
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/src/views');
 app.use(cors({
@@ -33,10 +33,10 @@ app.use(function(req, res, next) {
    res.locals.user = req.session.user;
    next();
 });
-/*
+
 app.get('/', function(req, res) {
    res.render('index');
-}); */
+}); 
 
 app.get('/home', function(req, res){
    res.json({
