@@ -198,9 +198,9 @@ export default {
             console.log(res.data);
             this.$session.start();
             this.$session.set('jwt', res.data.token);
-            this.$http.headers.common['Authorization'] = 'Bearer' + res.data.token
+            //this.$http.headers.common['Authorization'] = 'Bearer' + res.data.token
             this.$router.push({
-              path: '/dashboard'
+              name: 'Dashboard'
             });
           }
         });
