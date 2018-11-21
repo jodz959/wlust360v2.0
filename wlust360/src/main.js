@@ -6,8 +6,9 @@ import BootstrapVue from 'bootstrap-vue'
 import VueSession from 'vue-session'
 import App from './App'
 import router from './router'
-import 'bootstrap/dist/minty/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './assets/bootstrap/minty/bootstrap.css'
 import './assets/css/base.css'
 
 Vue.config.productionTip = false
