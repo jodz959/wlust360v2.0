@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node wlust360/server.js",
+    "start": "node app.js && npm run wlust360/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
