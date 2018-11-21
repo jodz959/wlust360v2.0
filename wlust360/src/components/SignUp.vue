@@ -194,7 +194,7 @@ export default {
       console.log('IN register function', url.signup);
       axios.post(url.signup, this.form)
         .then(res => {
-          if (res.status === 200 && 'token' in res.data) {
+          if (res.data.auth) {
             console.log(res.data);
             this.$session.start();
             this.$session.set('jwt', res.data.token);
