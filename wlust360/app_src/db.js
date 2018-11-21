@@ -7,6 +7,8 @@ const userSchema = new Schema({
    lName: String,
    email: String,
    phone: String,
+   home: String,
+   pwHash: String,
    trips: [{ type: Schema.Types.ObjectId, ref:'Trips'}],
    healthInfo: [{type: Schema.Types.ObjectId, ref: 'HealthInfo'}],
    trans: [{type: Schema.Types.ObjectId, ref: 'Transaction'}]
@@ -19,6 +21,7 @@ const tripSchema = new Schema({
    dest: String,
    users:[{ type: Schema.Types.ObjectId, ref:'User'}]
 });
+
 tripSchema.plugin(URLSlugs('title start'));
 
 const healthSchema = new Schema({
