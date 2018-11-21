@@ -107,7 +107,7 @@ As a user, I want to see suggestions of activities
   
 * (1 point) Client side form validation  
   * For eg.. checks that all required fields are filled out or checks out of range value
-* (3 points) Angularjs 
+* (4 points) Vuejs
   * Frontend Framework
 * (2 points) API's
   * Trip Advisor/Foursquare
