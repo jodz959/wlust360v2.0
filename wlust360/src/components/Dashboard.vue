@@ -105,8 +105,8 @@ export default {
           const trip = {
             title: res.data.trip.title,
             dest: res.data.trip.dest,
-            start: new Date(res.data.trip.start).toDateString(),
-            end: new Date(res.data.trip.end).toDateString()
+            start: res.data.trip.start,
+            end: res.data.trip.end
           }
           if (this.trips) {
             this.trips.push(trip)

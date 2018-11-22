@@ -38,9 +38,13 @@ function createTrip(req, res) {
                return res.status(500).json({auth: false, message: err });
             } else {
                console.log('trips' , trip);
-               //user.trips.push(trip._id);
-               //user.markModified('user.trips');
-               return res.status(200).json({ success: true, user: user.email, trip: user.trips });
+               // push the reeference to the trip to user
+               user.trips.push(trip._id);
+               user.save(error => {
+                  if (!error) {
+                     return res.status(200).json({ success: true, user: user.email, trip: trip });
+                  }
+               });
             }
          });
       });
