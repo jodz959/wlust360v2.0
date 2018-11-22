@@ -13,14 +13,20 @@
                   li.nav-item.active
                      a.nav-link(href='#') Profile
                   li.nav-item
-                     a.btn.btn-secondary(href='#') Logout
+                     a.btn.btn-secondary(v-on:click="logout") Logout
 </template>
 
 <script>
 
 export default {
   name: 'NavbarAuth',
-  props: ['username']
+  props: ['username'],
+  methods: {
+    logout: function () {
+      this.$session.destroy()
+      this.$router.push('/signup');
+    } 
+  }
 }
 </script>
 

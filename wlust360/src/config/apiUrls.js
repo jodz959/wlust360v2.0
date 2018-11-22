@@ -16,7 +16,7 @@ const url = {};
 url.signup = 'auth/signup';
 url.login = 'auth/login';
 url.me = 'auth/me';
-url.createTrip = '/api/trip/create-trip';
-url.getTrip = '/api/trip/my-trips';
+url.createTrip = 'api/trip/create-trip';
+url.getTrips = 'api/trip/get-trips';
 
 module.exports = url;

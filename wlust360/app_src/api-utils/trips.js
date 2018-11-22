@@ -20,8 +20,8 @@ function createTrip(req, res) {
       if(err) {
          return res.status(500).json({ auth: false, message: "Auth failed"});
       } */
-      console.log(req.body);
-      console.log(req.body.title);
+   //   console.log(req.body);
+     // console.log(req.body.title);
       User.findById(req.decoded.id, (err, user) => {
          if (err) {
             return res.status(404).json({ auth: false, message: "User Not Found" });
@@ -38,7 +38,9 @@ function createTrip(req, res) {
                return res.status(500).json({auth: false, message: err });
             } else {
                console.log('trips' , trip);
-               return res.status(200).json({ success: true, user: user.email, trips: user.trips });
+               //user.trips.push(trip._id);
+               //user.markModified('user.trips');
+               return res.status(200).json({ success: true, user: user.email, trip: user.trips });
             }
          });
       });
@@ -61,7 +63,7 @@ function getTrips(req, res) {
             console.log('ERRR ', err);
             console.log('TRIPS ', result);
             if(result && !err) {
-               return res.status(200).json(result.trips);
+               return res.status(200).json({ success: true, trips: result.trips });
             }
             return res.status(404).json({ message: 'Not found' });
          });

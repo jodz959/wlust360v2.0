@@ -12,8 +12,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'SignUp',
-      component: SignUp
+      name: 'Login',
+      component: Login
     },
     {
       path: '/signup',
