@@ -117,10 +117,10 @@ As a user, I want to see suggestions of activities
  
 (___TODO__: list any tutorials/references/etc. that you've based your code off of_)
 
-[Mongo Express Vue Node.js (MEVN Stack) CRUD Web Application](https://www.djamware.com/post/5a1b779f80aca75eadc12d6e/mongo-express-vue-nodejs-mevn-stack-crud-web-application)
-[Local Authentication with Express 4.x and Passport.js](https://medium.com/@nohkachi/local-authentication-with-express-4-x-and-passport-js-745eba47076d)
+[Mongo Express Vue Node.js (MEVN Stack) CRUD Web Application](https://www.djamware.com/post/5a1b779f80aca75eadc12d6e/mongo-express-vue-nodejs-mevn-stack-crud-web-application)  
+[Local Authentication with Express 4.x and Passport.js](https://medium.com/@nohkachi/local-authentication-with-express-4-x-and-passport-js-745eba47076d)  
 [How to build a complete form with Vue.js](https://auralinna.blog/post/2018/how-to-build-a-complete-form-with-vue-js
-)
-[A guide for adding JWT token based authentication to your single page NodeJS applications](https://medium.com/dev-bits/a-guide-for-adding-jwt-token-based-authentication-to-your-single-page-nodejs-applications-c403f7cf04f4)
+)  
+[A guide for adding JWT token based authentication to your single page NodeJS applications](https://medium.com/dev-bits/a-guide-for-adding-jwt-token-based-authentication-to-your-single-page-nodejs-applications-c403f7cf04f4)  
 
 
