@@ -73,20 +73,20 @@ Link: [DB SCHEMA](src/db.js)
 
 ## Wireframes 
 /user/dashboard - Ads Post
-![events](docs/imgs/event.JPG)  
+![events](wlust360/docs/imgs/event.JPG)  
 Shows all events added by user plus suggested events.
 
 /user/dashboard- SP Summaary
-![finance](docs/imgs/finance.JPG)  
+![finance](wlust360/docs/imgs/finance.JPG)  
 Shows all transactions added by user
 
-![health](docs/imgs/health.JPG)  
+![health](wlust360/docs/imgs/health.JPG)  
 Shows local emergency numbers and user's general health info
 
 ## SiteMap
 
 Here's a draft of the sitemap  
-![site_map](docs/imgs/site_map.JPG)  
+![site_map](wlust360/docs/imgs/site_map.JPG)  
 
 ## User Stories
 As a user I can to sign up for the site    
@@ -117,5 +117,10 @@ As a user, I want to see suggestions of activities
  
 (___TODO__: list any tutorials/references/etc. that you've based your code off of_)
 
-[Local Authentication with Express 4.x and Passport.js](https://medium.com/@nohkachi/local-authentication-with-express-4-x-and-passport-js-745eba47076d)
+[Mongo Express Vue Node.js (MEVN Stack) CRUD Web Application](https://www.djamware.com/post/5a1b779f80aca75eadc12d6e/mongo-express-vue-nodejs-mevn-stack-crud-web-application)  
+[Local Authentication with Express 4.x and Passport.js](https://medium.com/@nohkachi/local-authentication-with-express-4-x-and-passport-js-745eba47076d)  
+[How to build a complete form with Vue.js](https://auralinna.blog/post/2018/how-to-build-a-complete-form-with-vue-js
+)  
+[A guide for adding JWT token based authentication to your single page NodeJS applications](https://medium.com/dev-bits/a-guide-for-adding-jwt-token-based-authentication-to-your-single-page-nodejs-applications-c403f7cf04f4)  
+
 
