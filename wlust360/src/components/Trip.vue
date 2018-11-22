@@ -1,5 +1,5 @@
 <template lang="pug">
-   .card-text-white.bg-pink.mb-3
+   .card-text-white.bg-success.mb-3
       .card-header {{ trip.title }}
       .card-body
          h2.title {{ trip.dest }}
