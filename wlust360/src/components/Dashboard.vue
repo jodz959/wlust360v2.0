@@ -127,10 +127,6 @@ export default {
       }).catch(err => {
          console.log(err)
       })
-    },
-    logout: function () {
-      this.$session.destroy()
-      this.$router.push('/login')
     }
   }
 }
