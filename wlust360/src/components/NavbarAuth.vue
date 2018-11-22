@@ -24,7 +24,7 @@ export default {
   methods: {
     logout: function () {
       this.$session.destroy()
-      this.$router.push('/logout');
+      this.$router.push('/login');
     } 
   }
 }
