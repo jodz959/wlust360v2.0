@@ -115,6 +115,11 @@ export default {
             this.trips.push(trips);
             this.$nextTick(() => { console.log('updated') });
           }
+          //reset fields
+          this.tripForm.title = ''
+          this.tripForm.dest = ''
+          this.tripForm.start= ''
+          this.tripForm.end = ''
           console.log('trips returned' + this.trips);
         } else {
             console.log('not successful' + JSON.stringify(res.data));
