@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const mongoose = require('mongoose');
+const history = require('connect-history-api-fallback');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const app = express();
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV === 'production') {
    secret = config.secret;
 }
 
+app.use(history());
 mongoose.connect(dbURL, {useNewUrlParser: true});
 app.set('view engine', 'pug');
 //app.set('views', __dirname + '/src/views');

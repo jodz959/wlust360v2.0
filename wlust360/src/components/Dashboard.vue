@@ -20,6 +20,7 @@
             input.text-input.input-box(v-model="tripForm.end" name="end" placeholder="Enter date as 2019-11-05" type="text" required)
             br
             button.btn-lgn.btn.btn-success(type="submit") Add Trip
+         br
          div(v-for="trip in trips")
             Trip(v-bind:trip="trip")
 </template>
