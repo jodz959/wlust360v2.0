@@ -6,8 +6,11 @@ import Login from '@/components/Login'
 import Dashboard from '@/components/Dashboard'
 
 Vue.use(Router)
+import auth from './../mw/auth'
 
-export default new Router({
+//auth.checkAuth(this);
+
+const router = new Router({
   mode: 'history',
   routes: [
     {
@@ -28,7 +31,35 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'Dashboard',
-      component: Dashboard
+      component: Dashboard,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/hello',
+      name: 'HelloWorld',
+      component: HelloWorld
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+
+   //TODO: pass router.app as context
+    if(auth.checkAuth(router.app.$session.get('jwt'))) {
+      console.log('user is authenticated')
+      next()
+    } else {
+      console.log('redirecting to login')
+      next({
+        path: '/login',
+        query: { st: 'unauthorized' } 
+      })
+    }
+  } else {
+   //path does not require auth 
+   next()
+  }
+})
+
+export default router
