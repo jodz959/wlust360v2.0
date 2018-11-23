@@ -69,7 +69,7 @@ Country
 }
 ```
 
-Link: [DB SCHEMA](src/db.js)
+Link: [DB SCHEMA](wlust360/app_src/models)
 
 ## Wireframes 
 /user/dashboard - Ads Post
