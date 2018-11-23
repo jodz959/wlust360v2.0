@@ -14,14 +14,14 @@ const validateToken = (req, res, next) => {
    if (token) {
       jwt.verify(token, secret, (err, decoded) => {
          if(err) {
-            return res.status(500).json({ auth: false, message: "Auth failed"});
+            return res.status(500).json({ auth: false, success: false, message: "Auth failed"});
          }
       
          req.decoded = decoded;
          next();
       });
    } else {
-      return res.status(403).json({ auth: false, message: "No Access Token Found"});
+      return res.status(403).json({ auth: false, success: false, message: "No Access Token Found"});
    }
 }
 

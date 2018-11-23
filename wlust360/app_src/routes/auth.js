@@ -105,6 +105,7 @@ router.get('/me', validateToken, (req, res) => {
 });
 
 router.get('/logout', (req, res) => {
+   console.log('logout method: logging out');
    req.logout();
    req.session.destroy();
    res.json({auth: false, token: null});

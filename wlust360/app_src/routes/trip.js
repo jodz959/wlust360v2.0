@@ -10,7 +10,7 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 //protected routes
-//router.use(require('./../middlewares/authenticated'));
+router.use(require('./../middlewares/authenticated'));
 router.use(vt.validateToken);
 
 router.post('/create-trip', trip.createTrip);
