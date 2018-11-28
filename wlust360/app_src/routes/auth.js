@@ -61,11 +61,18 @@ router.post('/login', (req, res, next) => {
          return next(err);
       }
       if (!user) {
-        return res.json({message: info.message});
+         if (info.message === 'USER DOES NOT EXISTS') {
+            return res.json({auth: false, message: 'Incorrect username entered.'});
+         }
+
+         if (info.message === 'INCORRECT PASSWORD') {
+            return res.json({auth: false, message: 'Incorrect password entered.'});
+         }
       }
+
       req.login(user, (err) => {
          if (err) {
-            return res.json({success: false});
+            return res.status(404).json({auth: false, message:info.message, success: false});
          } else {
             const nUser = {
                auth: true

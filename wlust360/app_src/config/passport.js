@@ -63,8 +63,13 @@ passport.use('local-login', new LocalStrategy({
          if (!user) {
             console.log('USER DOES NOT EXIST');
             return done(null, false, {message: 'USER DOES NOT EXISTS'});
-         } else {
-            return done(null, user);            
+         } else { //user exists
+            //check password
+            if (user.validpw(password)) {
+                return done(null, user);      
+            } else {
+               return done(null, false, {message: 'INCORRECT PASSWORD'});
+            }    
          }
       }); //end user lookup
 })); //enid stratefy
