@@ -7,10 +7,6 @@
 
             .collapse.navbar-collapse.justify-content-end(id='navbarCollapse')
                ul.navbar-nav.text-right
-                  li.nav-item.active
-                     a.nav-link(href='#') Trips
-                  li.nav-item.active
-                     a.nav-link(href='#') Profile
                   li.nav-item
                      a.btn.btn-secondary(href='#') Login/SignUp
 </template>
