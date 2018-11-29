@@ -6,9 +6,12 @@ import BootstrapVue from 'bootstrap-vue'
 import VueSession from 'vue-session'
 import App from './App'
 import VueMoment from 'vue-moment'
+import Vuetify from 'vuetify'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'vuetify/dist/vuetify.min.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import './assets/bootstrap/minty/bootstrap.css'
 import './assets/css/base.css'
 
@@ -16,6 +19,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(VueSession)
 Vue.use(VueMoment)
+Vue.use(Vuetify)
 
 /* eslint-disable no-new */
 Vue.component('v-select', vSelect)

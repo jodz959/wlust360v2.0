@@ -1,7 +1,8 @@
 <template lang="pug">
    div(id="app")
       img(src="./assets/logo.png")
-      router-view
+      v-app
+         router-view
 </template>
 
 <script>
