@@ -34,6 +34,7 @@
     "popper.js": "^1.14.5",
     "serve-static": "^1.13.2",
     "vue": "^2.5.17",
+    "vue-moment": "^4.0.0",
     "vue-router": "^3.0.1",
     "vue-select": "^2.5.1",
     "vue-session": "^1.0.0"

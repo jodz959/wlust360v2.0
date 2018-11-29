@@ -5,6 +5,7 @@ import vSelect from 'vue-select'
 import BootstrapVue from 'bootstrap-vue'
 import VueSession from 'vue-session'
 import App from './App'
+import VueMoment from 'vue-moment'
 import router from './router'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -14,6 +15,7 @@ import './assets/css/base.css'
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(VueSession)
+Vue.use(VueMoment)
 
 /* eslint-disable no-new */
 Vue.component('v-select', vSelect)

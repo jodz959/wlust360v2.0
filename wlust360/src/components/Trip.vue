@@ -3,7 +3,9 @@
       .card-header.trip-card-title {{ trip.title }}
       .card-body
          h2.title {{ trip.dest }}
-         h2.title {{ trip.start }} - {{ trip.end }}
+         h2.title 
+            span {{ trip.start | moment("dddd, MMMM do YYYY") }} - 
+            span {{ trip.end | moment("dddd, MMMM do YYYY") }}
          button.btn.btn-warning Add some events to your trip 
 </template>
 
