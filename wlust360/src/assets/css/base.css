@@ -74,6 +74,10 @@
 .trip-card-title {
    font-size: 30px;
 }
+
+.v-menu {
+   display: inline-block;
+}
 body {
    background-color: white;
 }

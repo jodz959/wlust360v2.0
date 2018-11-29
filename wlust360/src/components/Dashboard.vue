@@ -15,9 +15,17 @@
             br
             input.text-input.input-box(v-model="tripForm.dest" name="dest" placeholder="Destination" type="text" required)
             br
-            input.text-input.input-box(v-model="tripForm.start" name="start" placeholder="Enter date as 2019-11-05" type="text" required)
+            label Start Date
             br
-            input.text-input.input-box(v-model="tripForm.end" name="end" placeholder="Enter date as 2019-11-05" type="text" required)
+            v-menu.text-input.input-box(:close-on-content-click="false" v-model="menuStart" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px")
+               v-text-field(slot="activator" v-model="tripForm.start" prepend-icon="event" readonly)
+               v-date-picker(v-model="tripForm.start" color="teal lighten-2" @input="menuStart = false" actions) 
+            br
+            label End Date
+            br
+            v-menu.text-input.input-box(:close-on-content-click="false" v-model="menuEnd" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px")
+               v-text-field(slot="activator" v-model="tripForm.end" prepend-icon="event" readonly)
+               v-date-picker(v-model="tripForm.end" color="teal lighten-2" @input="menuStart = false" actions)
             br
             button.btn-lgn.btn.btn-success(type="submit") Add Trip
          br
@@ -37,11 +45,13 @@ export default {
       user: {},
       errors: [],
       trips: null,
+      menuStart: false,
+      menuEnd: false,
       tripForm: { 
         title: '',
         dest: '',
-        start: '',
-        end: '',
+        start: new Date().toISOString().substr(0, 10),
+        end: new Date().toISOString().substr(0, 10)
       }
     }
   },
@@ -73,6 +83,13 @@ export default {
       });
 
       //get all trips as well
+    },
+    startDates (val) {
+      val >= new Date()
+      
+    },
+    endDates (val) {
+      val >= this.tripForm.startDate
     },
     fetchTrips () {
       const config = {
