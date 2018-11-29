@@ -86,7 +86,7 @@ export default {
     login: function () {
       console.log('IN login function', url.login)
       axios.post(url.login, this.form)
-        .then(function(res) {
+        .then((res) => {
           if (res.data.auth) {
             console.log(res.data)
             this.$session.start()
@@ -101,7 +101,8 @@ export default {
             console.log('Auth is false')
             this.email = ''
             this.password = ''
-            this.errors.push(res.data.message)
+            this.message = ''
+            this.message = res.data.message;
          }
        })
      }
