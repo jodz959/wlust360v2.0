@@ -64,9 +64,10 @@ export default {
     /* eslint-disable semi */
     checkErrors: function (e) {
       this.errors = [];
+      this.message = ''
       e.preventDefault();
       if (this.form.password.length < 8 || this.form.password.length > 20) {
-        this.errors.push('Incorrect password entered')
+        this.message = 'Incorrect password entered'
       }
       if (this.form.password === '') {
         this.errors.push('Password is required')
@@ -91,21 +92,22 @@ export default {
             console.log(res.data)
             this.$session.start()
             this.$session.set('jwt', res.data.token);
-            this.email = ''
-            this.password = ''
+            this.resetForm()
             //this.$http.headers.common['Authorization'] = 'Bearer' + res.data.token
             this.$router.push({
               name: 'Dashboard'
             })
           } else {
             console.log('Auth is false')
-            this.email = ''
-            this.password = ''
             this.message = ''
             this.message = res.data.message;
          }
        })
-     }
+     }, 
+    resetForm: function() {
+      this.form.email = ''
+      this.form.password =''
+    }
   }
 }
 </script>
