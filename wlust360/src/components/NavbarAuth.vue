@@ -31,19 +31,19 @@ export default {
         }
       }
       axios.get(url.logout, config).then(res => {
-          if (!res.data.auth) {  //user logged out from server-side
-            console.log('loggingg out');
-            this.$session.clear()
-            this.$session.destroy()
-            this.$router.push({ name: 'Login', query: { st: 'logout' }})
-          } else {
-            //error occured on server-side, logout from client side
-            console.log('error occured - logout failed');
-            this.$session.destroy()
-            this.$router.push({ name: 'Login', query: { st: 'logout' }})
-         } 
+        if (!res.data.auth) { // user logged out from server-side
+          console.log('loggingg out')
+          this.$session.clear()
+          this.$session.destroy()
+          this.$router.push({ name: 'Login', query: { st: 'logout' } })
+        } else {
+          //error occured on server-side, logout from client side
+          console.log('error occured - logout failed')
+          this.$session.destroy()
+          this.$router.push({ name: 'Login', query: { st: 'logout' } })
+        }
       })
-    } 
+    }
   }
 }
 </script>

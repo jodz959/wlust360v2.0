@@ -40,22 +40,22 @@ import url from './../config/apiUrls'
 export default {
   name: 'Login',
   components: { Navbar },
-  data () { 
+  data () {
     return {
       user: '',
       message: '',
       errors: [],
       form: {
         email: '',
-        password: '',
+        password: ''
       }
     }
   },
   created () {
-    const msg = this.$route.query.st;
+    const msg = this.$route.query.st
     if (msg === 'logout') {
-      this.message = "Logout Successful"
-    } 
+      this.message = 'Logout Successful'
+    }
     if (msg === 'unauthorized') {
       this.message = 'Please log in to continue.'
     }
@@ -82,7 +82,7 @@ export default {
     },
     validEmail: function (email) {
       const re = /^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(email);
+      return re.test(email)
     },
     login: function () {
       console.log('IN login function', url.login)
@@ -93,7 +93,6 @@ export default {
             this.$session.start()
             this.$session.set('jwt', res.data.token);
             this.resetForm()
-            //this.$http.headers.common['Authorization'] = 'Bearer' + res.data.token
             this.$router.push({
               name: 'Dashboard'
             })
@@ -101,12 +100,12 @@ export default {
             console.log('Auth is false')
             this.message = ''
             this.message = res.data.message;
-         }
-       })
-     }, 
-    resetForm: function() {
+          }
+        })
+    },
+    resetForm: function () {
       this.form.email = ''
-      this.form.password =''
+      this.form.password = ''
     }
   }
 }
