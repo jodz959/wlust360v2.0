@@ -1,5 +1,5 @@
 <template lang="pug">
-   div.container
+   div
       NavbarAuth(v-bind:username="user.fName")
       div.container
          h2 Add a Trip
