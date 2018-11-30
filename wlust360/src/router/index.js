@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import SignUp from '@/components/SignUp'
 import Login from '@/components/Login'
 import Dashboard from '@/components/Dashboard'
+import TripSummary from '@/components/TripSummary'
 
 Vue.use(Router)
 import auth from './../mw/auth'
@@ -32,6 +33,12 @@ const router = new Router({
       path: '/dashboard',
       name: 'Dashboard',
       component: Dashboard,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: '/dashboard/:trip',
+      name: 'TripSummary',
+      component: TripSummary,
       meta: { requiresAuth: true }
     },
     {

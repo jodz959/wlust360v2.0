@@ -6,7 +6,8 @@
          h2.title 
             span {{ trip.start | moment("dddd, MMMM do YYYY") }} - 
             span {{ trip.end | moment("dddd, MMMM do YYYY") }}
-         button.btn.btn-warning Add some events to your trip 
+         router-link(:to="{ name: 'TripSummary', params: { trip: trip.slug.slice(0, -22) } }")
+            button.btn.btn-warning View Trip 
 </template>
 
 <script>
