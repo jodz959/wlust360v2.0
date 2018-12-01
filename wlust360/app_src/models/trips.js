@@ -8,7 +8,10 @@ const tripSchema = new Schema({
    start: Date,
    end: Date,
    dest: String,
-   users:[{ type: Schema.Types.ObjectId, ref:'User'}]
+   users: [{ type: Schema.Types.ObjectId, ref:'User' }],
+   ious: [{ type: Schema.Types.ObjectId, ref:'IOU' }],
+   plans: [{ type: Schema.Types.ObjectId, ref:'Plan' }],
+   country: { type: Schema.Types.ObjectId, ref:'Country'}
 });
 
 tripSchema.plugin(URLSlugs('title start'));
