@@ -1,0 +1,232 @@
+country,police,ambulance,fire,language
+afghanistan,100119,102,+93 (0) 202 101 333,afghan persian
+albania,129,127,128,albanian 
+algeria,17,,14,arabic 
+american samoa,911,911,911,samoan 
+andorra,112,112,112,catalan
+angola,113,115,112,portuguese
+anguilla,911,911,911,english 
+antigua and barbuda,911,911,911,english
+argentina,911,107,100,spanish
+armenia,102,103,101,armenian
+aruba,911,911,911,dutch
+australia,0,0,0,english
+austria,112,112,112,german
+azerbaijan,102,103,101,azerbaijani
+"bahamas, the",911919,911919,911919,english
+bahrain,999,999,999,arabic
+bangladesh,999,,,bangla
+barbados,211,511,311,english
+belarus,102,103,101,belarusian
+belgium,112,112,112,dutch
+belize,911,911,911,english 
+benin,,,,french 
+bermuda,911,911,911,english 
+bhutan,113,112,110,dzongkha
+bolivia,110,118,119,spanish 
+bosnia and herzegovina,122,124,123,bosnian
+botswana,999,997,998,setswana
+brazil,190,192,193,portuguese
+british virgin islands,911999,911999,911999,english
+brunei,993,991,955,malay
+bulgaria,112,112,112,bulgarian
+burkina faso,,,,french
+burma,999,999,999,burmese
+burundi,,,,kirundi 
+cambodia,117,119,118,khmer
+cameroon,,,,english
+canada,911,911,911,english
+cape verde,132,130,131,portuguese
+cayman islands,911,911,911,english
+central african republic,117,,,french
+chad,17,,18,french 
+chile,133,131,132,spanish
+china,110,120,119,mandarin
+christmas island,0,0,0,english 
+cocos (keeling) islands,,,,malay
+colombia,123,123,123,spanish
+comoros,17,,,arabic 
+"congo, democratic republic of the",,,,french
+"congo, republic of the",24206665-4804,24206665-4804,24206665-4804,french
+cook islands,999,998,996,english
+costa rica,911,911,911,spanish 
+côte d'ivoire,180111,111,110111170,french
+croatia,112,112,112,croatian
+cuba,106,,105,spanish
+cyprus,112,112,112,greek
+czech republic,112,112,112,czech
+denmark,112,112,112,danish
+djibouti,17,351351,18,french 
+dominica,911999,911999,911999,english
+dominican republic,911,911,911,spanish
+ecuador,101,101,101,spanish 
+egypt,122,122180,122123,arabic 
+el salvador,911,911,911,spanish
+equatorial guinea,,,,spanish 
+eritrea,,,,afar
+estonia,112,112,112,estonian
+ethiopia,99191,99192,99193,amharic
+falkland islands (islas malvinas),999,999,999,english
+faroe islands,112,112,112,faroese 
+fiji,911,911,9170,english
+finland,112,112,112,finnish 
+france,112,112,112,french 
+french guiana,112,112,112,french
+french polynesia,17,15,18,french 
+gabon,1730,1300-1399,18,french
+"gambia, the",117,116,118,english 
+georgia,22,22,22,georgian 
+germany,112,112,112,german
+ghana,191,193,192,english
+gibraltar,112,190,190,english
+greece,112,112,112,greek
+greenland,,,,greenlandic 
+grenada,,,,english 
+guadeloupe,,,,french 
+guam,911,911,911,english 
+guatemala,122123120,122123120,122123120,spanish 
+guernsey,999,999,999,english
+guinea,,,,french
+guinea-bissau,,,,portuguese
+guyana,911,911913,911,english
+haiti,114,114,114,french 
+holy see (vatican city),112,112,112,italian
+honduras,199,199,199,spanish
+hong kong,999,,999,chinese 
+hungary,112,112,112,hungarian
+iceland,112,112,112,icelandic
+india,100,102,101,english 
+indonesia,110,118,113,bahasa indonesia
+iran,110,115,125,persian 
+iraq,122104,122,122115,arabic
+ireland,112,112,112,english
+israel,100,100101,100102,hebrew 
+italy,112,112,112,italian 
+jamaica,911,911,911,english
+japan,110,119,119,japanese
+jersey,112,112,112,english
+jordan,191,191,191,arabic 
+kazakhstan,103,103,103,kazakh
+kenya,999,999,999,english 
+kiribati,999,999,999,english
+"korea, north",,,,korean
+"korea, south",112,112119,112119,korean
+kuwait,112,112,112,arabic 
+kyrgyzstan,102,103,101,kyrgyz 
+laos,191,195,190,lao
+latvia,112,112,112,latvian
+lebanon,112,112,112,arabic 
+lesotho,123124,121,122,sesotho 
+liberia,911,911,911,english 
+libya,193,193,193,arabic
+liechtenstein,112,112,112,german 
+lithuania,112,112,112,lithuanian 
+luxembourg,112,112,112,luxembourgish
+macau,999,999,999,cantonese
+macedonia [fyrom],112,112,112,macedonian
+madagascar,117,117,117118,french 
+malawi,997,998,999,chichewa 
+malaysia,999,999,999,bahasa melayu
+maldives,119,102,118,maldivian dhivehi 
+mali,18,15,17,french 
+malta,112,112,112,maltese 
+marshall islands,911,911,911,marshallese
+martinique,17,15,18,french
+mauritania,117,,118,arabic 
+mauritius,999,114,115,french creole
+mayotte,,15,,french
+mexico,66,66,66,spanish
+"micronesia, federated states of",911,911,911,english 
+moldova,902,903,901,moldovan
+monaco,112,112,112,french 
+mongolia,102,103,101,khalkha mongol 
+montserrat,911999,911999,911999,english
+morocco,190,190,190,arabic 
+mozambique,119,117,198,emakhuwa 
+namibia,1011,2032276,2032270,english
+nauru,118117,118117,118117,nauruan
+nepal,100,100,100101,nepali 
+netherlands,112,112,112,dutch 
+new caledonia,17,15,18,french
+new zealand,111,111,111,english 
+nicaragua,118,118,118,spanish
+niger,,,,french 
+nigeria,199,199,199,english
+niue,999,999,999,english
+norfolk island,0,0,0,english 
+northern mariana islands,,,,chinese 
+norway,112,112,112,bokmal norwegian 
+oman,9999,9999,9999,arabic 
+pakistan,15,15,1516,urdu
+palau,911,911,911,palauan 
+panama,911,911,911,spanish 
+papua new guinea,0,0,0,melanesian pidgin
+paraguay,911,911,911,spanish 
+peru,105,117,116,spanish 
+philippines,117,117,117,filipino
+pitcairn islands,,,,english 
+poland,112,112,112,polish
+portugal,112,112,112,portuguese 
+puerto rico,911,911,911,spanish
+qatar,999,999,999,arabic 
+réunion,17,15112,18,french 
+romania,112,112,112,romanian 
+russia,2,3,1,russian
+rwanda,112,,,kinyarwanda
+saint helena,911,911,911,english
+saint kitts and nevis,911,911,911,english
+saint lucia,911,911,911,english 
+saint pierre and miquelon,17,15,18,french 
+saint vincent and the grenadines,911999,911999,911999,english
+samoa,995,996,994,samoan
+san marino,113,118,115,italian
+saudi arabia,999,997,998,arabic
+senegal,8.00e+17,8.00e+17,8.00e+17,french 
+serbia,112,112,112,serbian
+seychelles,999,999,999,creole 
+sierra leone,999,999,19,english 
+singapore,999,995,995,mandarin 
+slovakia,112,112,112,slovak
+slovenia,113,112,112,slovenian
+solomon islands,999,999,999,melanesian pidgin 
+somalia,,,,somali 
+south africa,10111,10177,10177,isizulu 
+spain,112,112,112,castilian spanish
+sri lanka,119118,110,110,sinhala
+sudan,112,,,arabic 
+suriname,115,115,115,dutch 
+svalbard,112,112,112,norwegian
+swaziland,999,999,999,english
+sweden,112,112,112,swedish
+switzerland,112,112,112,german 
+syria,112,110,113,arabic 
+taiwan,110,119,119,mandarin
+tajikistan,2,3,1,tajik 
+tanzania,111,111,111,swahili 
+thailand,191,1554,199,thai
+togo,117171,242,118,french 
+tokelau,,,,tokelauan 
+tonga,117171172,242,118,tongan
+trinidad and tobago,999,990,990,english 
+tunisia,197,197,197,arabic 
+turkey,155,112,155,turkish 
+turkmenistan,3,3,3,turkmen
+turks and caicos islands,911999,911999,911999,english
+tuvalu,911,911,911,tuvaluan
+uganda,999,999,999,english
+ukraine,112,112,112,ukrainian 
+united arab emirates,998999,998999,998999,arabic 
+united kingdom,999,999,999,english
+united states,911,911,911,english 
+uruguay,911,911,911,spanish
+uzbekistan,2,3,1,uzbek 
+vanuatu,112,112,112,pidgin
+venezuela,171,171,171,spanish 
+vietnam,113,115,114,vietnamese 
+virgin islands,911,911,911,english 
+wallis and futuna,,,,wallisian 
+west bank,101,101,101,arabic
+western sahara,,150,,arabic
+yemen,199,199,199,arabic
+zambia,999,991,993,english 
+zimbabwe,999,994,993,english
