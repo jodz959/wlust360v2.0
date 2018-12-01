@@ -10,6 +10,7 @@ const app = express();
 const authRoutes = require('./app_src/routes/auth');
 const tripRoutes = require('./app_src/routes/trip');
 const iouRoutes = require('./app_src/routes/ious');
+const planRoutes = require('./app_src/routes/plan');
 
 let dbURL;
 let secret;
@@ -48,6 +49,7 @@ app.use((req, res, next) => {
 app.use('/auth', authRoutes);
 app.use('/api/trip', tripRoutes);
 app.use('/api/iou', iouRoutes);
+app.use('/api/plan', planRoutes);
 
 /*catch any routes not registeres
 app.get('*', (req, res) => {
