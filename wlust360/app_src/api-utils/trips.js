@@ -1,27 +1,22 @@
+const fs = require('fs');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('./../models/users');
 const Trip = require('./../models/trips');
+const Country = require('./../models/countries');
 
 let secret;
-if (process.env.NODE_ENV === 'production') {
-   secret = process.env.secret;
+if (process.env !== undefined) {
+   if (process.env.NODE_ENV === 'production') {
+      secret = process.env.secret;
+   }
 } else {
    const config = require('./../config/config');
    secret = config.secret;
 }
 
 function createTrip(req, res) {
-/*   const token = req.headers['x-access-token'];
-   if (!token) {
-      return res.status(401).json({ auth: false, message: 'No auth'});
-   }
-   jwt.verify(token, secret, (err, decoded) => {
-      if(err) {
-         return res.status(500).json({ auth: false, message: "Auth failed"});
-      } */
-   //   console.log(req.body);
-     // console.log(req.body.title);
+   //make sure country data exists
       User.findById(req.decoded.id, (err, user) => {
          if (err) {
             return res.status(404).json({ auth: false, message: "User Not Found" });
@@ -30,8 +25,8 @@ function createTrip(req, res) {
          new Trip({
             createdBy: user._id,
             title: req.body.title,
-            start: req.body.start,
-            end: req.body.end,
+            start: req.body.start.slice(0, -22),
+            end: req.body.end.slice(0, -22),
             dest: req.body.dest   
          }).save((err, trip) => {
             if (err) {
@@ -42,38 +37,47 @@ function createTrip(req, res) {
                user.trips.push(trip._id);
                user.save(error => {
                   if (!error) {
-                     return res.status(200).json({ success: true, user: user.email, trip: trip });
+                     //get the associated country
+                     const dest = req.body.dest.split(/,/);
+                     let place;
+                     if (dest.length === 1) {
+                        place = dest[0].toLowerCase();
+                     } else { //get last item
+                        place = dest[dest.length - 1].toLowerCase();
+                     } 
+                     //add country to get health info
+                     Country.findOne({ name: place }, (err, country) => {
+                        if (country === undefined || country === null) {
+                           console.log('Error saving country to trip');
+                           //return trip if the country is not found
+                           return res.status(200).json({ auth: true , success: true, user: user.email, trip: trip });
+                        } else {
+                        trip.country = country._id;
+                           return res.status(200).json({ auth: true ,success: true, user: user.email, trip: trip });
+                        }
+                     });
                   }
-               });
+               });   
             }
          });
       });
-  // });
-
 }
 
 function getTrips(req, res) {
-/*   const token = req.headers['x-access-token'];
-   if (!token) {
-      return res.status(401).json({ auth: false, message: 'No auth'});
-   }
-   jwt.verify(token, secret, (err, decoded) => {
-      if(err) {
-         return res.status(500).json({ auth: false, message: "Auth failed"});
-      } */
-      //get all user trips and return them
-      User.findById(req.decoded.id)
-         .populate('trips').exec((err, result) => {
-            console.log('ERRR ', err);
-            console.log('TRIPS ', result);
-            if(result && !err) {
-               return res.status(200).json({ success: true, trips: result.trips });
-            }
-            return res.status(404).json({ message: 'Not found' });
-         });
-  // });
-
+   //return all user trips and the country for each trip 
+   
+   User.findById(req.decoded.id)
+      .populate({ path: 'trips', populate: { path: 'country'} }).exec((err, result) => {
+         console.log('ERRR ', err);
+         console.log('TRIPS ', result);
+         if(result && !err) {
+            return res.status(200).json({ success: true, trips: result.trips });
+         }
+         return res.status(404).json({ success: true,  message: 'Not found' });
+   });
 }
+
+
 
 module.exports = {
    createTrip,
