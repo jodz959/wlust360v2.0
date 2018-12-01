@@ -25,14 +25,23 @@ function createTrip(req, res) {
          new Trip({
             createdBy: user._id,
             title: req.body.title,
-            start: req.body.start.slice(0, -22),
-            end: req.body.end.slice(0, -22),
+            start: req.body.start,
+            end: req.body.end,
             dest: req.body.dest   
          }).save((err, trip) => {
             if (err) {
                return res.status(500).json({auth: false, message: err });
             } else {
-               console.log('trips' , trip);
+               console.log('trip' , trip);
+               
+               //update slug
+               const slug = (trip.slug + '').slice(0, -22);
+               trip.slug = slug;
+               trip.markModified(slug);
+               trip.save(err => {
+                  if (err) { console.log('Error saving slug ', err); }
+               });
+
                // push the reeference to the trip to user
                user.trips.push(trip._id);
                user.save(error => {
