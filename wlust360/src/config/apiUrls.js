@@ -19,5 +19,9 @@ url.logout = 'auth/logout';
 url.me = 'auth/me';
 url.createTrip = 'api/trip/create-trip';
 url.getTrips = 'api/trip/get-trips';
+url.createIOU = '/api/iou/create-iou';
+url.getIOUs = '/api/iou/get-ious';
+url.createPlan = '/api/plan/create-plan';
+url.getPlans = '/api/plan/get-plans';
 
 module.exports = url;
