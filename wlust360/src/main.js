@@ -15,6 +15,8 @@ import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import './assets/bootstrap/minty/bootstrap.css'
 import './assets/css/base.css'
 
+//Vue.prototype.$eventbus = new Vue()
+
 Vue.config.productionTip = false
 Vue.use(BootstrapVue)
 Vue.use(VueSession)

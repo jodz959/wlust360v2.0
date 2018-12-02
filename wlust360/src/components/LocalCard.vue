@@ -2,7 +2,7 @@
    .card-text-white.mb-3.trip-card(:class="'bg-' + local.color")
       .card-header.trip-card-title.local-card-header {{ local.title }}
       .card-body.local-card-body
-         img(:src="getImageUrl(local.imgSrc)")
+         img(:src="getUrl(local.imgSrc)")
          h2.title.local-card-number {{ local.number }}
          p.card-text
             | {{ local.text }}
@@ -18,9 +18,11 @@ export default {
     }
   },
   methods: {
-    getImageUrl(url) {
-       return require(""+url)
+    getUrl(url) {
+      const images = require.context('../assets/', false, /\.png$/)
+      return images('./' + url)
     }
+
   }
 }
 </script>
