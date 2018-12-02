@@ -10,10 +10,10 @@ function createPlan(req, res) {
 
    Trip.findOne({ slug: slug}, (err, trip) => {
       // TODO: Create plan only if you're a user on the trip
-      // for now user can only create plans on trips they created
-      if ((''+result.createdBy) !== (''+req.decoded.id)) {
+      /* for now user can only create plans on trips they created
+      if ((''+trip.createdBy) !== (''+req.decoded.id)) {
         return res.status(403).json({ success: false, plans: [] });
-      } 
+      }*/ 
 
       if (!err) {
          new Plan({
@@ -52,19 +52,22 @@ function getPlans(req, res) {
 
    Trip.findOne({ slug: slug })
       .populate('plans')
+      .populate('country')
       .exec((err, result) => {
          console.log('ERRR ', err);
-         console.log('IOUS ', result);
-
-         //TODO: See all ious user is added to, for now only sees plans that user created 
-         if ((''+result.createdBy) !== (''+req.decoded.id)) {
-            return res.status(403).json({ success: false, plans: [] });
-         }
-         if(result && !err) {
-            return res.status(200).json({ success: true, plans: result.plans });
+         console.log('Plans ', result);
+         if (result && !err) {
+            
+            /*TODO: See all ious user is added to, for now only sees plans that loggedin user created 
+            if ((''+result.createdBy) !== (''+req.decoded.id)) {
+               return res.status(403).json({ success: false, trip: [] });
+            }*/
+            if(result && !err) {
+               return res.status(200).json({ success: true, trip: result });
+            }
          }
          console.log('error is ', err);
-         return res.status(404).json({ success: true,  message: 'Not found', plans: [] });
+         return res.status(404).json({ success: true,  message: 'Not found', trip: [] });
       });
 }
 
