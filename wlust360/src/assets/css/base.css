@@ -87,6 +87,18 @@
    background-size: cover;
 }
 
+.local-card-header {
+   height: 100px;
+}
+
+.local-card-body {
+   height: 150px;
+   padding: 30px;
+}
+
+.local-card-number {
+   font-size: 30px;
+}
 body {
    background-color: #fafafa;
 }
