@@ -2,7 +2,8 @@
    div
       NavbarAuth(v-bind:username="user")
       div.trip-header
-         h2 {{ currentTrip.title }}
+         div.header-content
+            h2.header-text {{ currentTrip.title }}
       v-tabs(centered ripple color="pink lighten-3" dark icons-and-text slot="activators")
          v-tabs-slider(color="teal accent-4")
          v-tab(v-for="tab of tabs" :key="tab.id") {{ tab.name }}
@@ -32,7 +33,7 @@
                      v-timeline-item(v-for="(plan, i) in plans" :color="plan.color" :icon="plan.icon" :key="i" fill-dot)
                         v-card(:color="plan.color")
                            v-card-title(class="title")
-                              span {{ plan.date | moment("dddd, MMMM do YYYY") }} 
+                              span {{ plan.date | moment("dddd, MMMM Do YYYY") }} 
                            v-card-text(class="white text--primary")
                               h2 {{ plan.title }}
                               p {{ plan.notes }}      
@@ -59,7 +60,7 @@
                            button.btn-lgn.btn.btn-success(@click="addIOU()" type="submit") Add
                v-card-text
                   h2(v-show="noIOUs") No IOUs added yet
-                  div.row
+                  div.row.card-container
                      div.col-4(v-for="iou in ious")
                         IOUCard(v-bind:iou="iou")
          v-tab-item(:id="tab-3")
@@ -171,6 +172,14 @@ export default {
         })
       }).catch(err => {
          console.log('err in axios', err);
+         if (err.response) {
+           if (err.response.status === 500) {
+             this.$router.push({
+               name: 'Login',
+               query: { st: 'unauthorized' }
+             })             
+           }
+         }
       })
 
       const iUrl = url.getIOUs + '/' + this.$route.params.trip
@@ -199,6 +208,14 @@ export default {
             this.getLocals()
         }).catch(err => {
          console.log('err in ious', err);
+         if (err.response) {
+           if (err.response.status === 500) {
+             this.$router.push({
+               name: 'Login',
+               query: { st: 'unauthorized' }
+             })             
+           }
+         }
       })
     },
     getLocals() {
