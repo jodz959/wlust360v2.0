@@ -101,13 +101,13 @@ As a user, I can choose who see's my health info
 As a user, I want to see suggestions of activities
 
 ## Research Topics
-* (5 points) Integrate user authentication
+* (4 points) Integrate user authentication
   * I'm going to be using passport for user authentication
   * I'll email you the password for the testing account after it's been made
   
 * (1 point) Client side form validation  
   * For eg.. checks that all required fields are filled out or checks out of range value
-* (4 points) Vuejs
+* (5 points) Vuejs
   * Frontend Framework
 * (2 points) API's
   * Trip Advisor/Foursquare
@@ -115,12 +115,13 @@ As a user, I want to see suggestions of activities
   
  ## [App.js](src/app.js)  
  
-(___TODO__: list any tutorials/references/etc. that you've based your code off of_)
+## References  
+External references and corresponding local files
 
-[Mongo Express Vue Node.js (MEVN Stack) CRUD Web Application](https://www.djamware.com/post/5a1b779f80aca75eadc12d6e/mongo-express-vue-nodejs-mevn-stack-crud-web-application)  
-[Local Authentication with Express 4.x and Passport.js](https://medium.com/@nohkachi/local-authentication-with-express-4-x-and-passport-js-745eba47076d)  
+[Mongo Express Vue Node.js (MEVN Stack) CRUD Web Application](https://www.djamware.com/post/5a1b779f80aca75eadc12d6e/mongo-express-vue-nodejs-mevn-stack-crud-web-application) \- [server.js](https://github.com/nyu-csci-ua-0480-001-003-fall-2018/jodz959-final-project/blob/master/wlust360/serve/server.js)  
+[Local Authentication with Express 4.x and Passport.js](https://medium.com/@nohkachi/local-authentication-with-express-4-x-and-passport-js-745eba47076d) \- [passport.js](https://github.com/nyu-csci-ua-0480-001-003-fall-2018/jodz959-final-project/blob/master/wlust360/app_src/config/passport.js), [auth.js](https://github.com/nyu-csci-ua-0480-001-003-fall-2018/jodz959-final-project/blob/master/wlust360/app_src/routes/auth.js)  
 [How to build a complete form with Vue.js](https://auralinna.blog/post/2018/how-to-build-a-complete-form-with-vue-js
-)  
-[A guide for adding JWT token based authentication to your single page NodeJS applications](https://medium.com/dev-bits/a-guide-for-adding-jwt-token-based-authentication-to-your-single-page-nodejs-applications-c403f7cf04f4)  
+) \- [Dashboard.vue](https://github.com/nyu-csci-ua-0480-001-003-fall-2018/jodz959-final-project/blob/master/wlust360/src/components/Dashboard.vue)  
+[A guide for adding JWT token based authentication to your single page NodeJS applications](https://medium.com/dev-bits/a-guide-for-adding-jwt-token-based-authentication-to-your-single-page-nodejs-applications-c403f7cf04f4) \- [token.js](https://github.com/nyu-csci-ua-0480-001-003-fall-2018/jodz959-final-project/blob/master/wlust360/app_src/middlewares/token.js)  
 
 
