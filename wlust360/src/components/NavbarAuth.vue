@@ -7,8 +7,9 @@
 
          .collapse.navbar-collapse.justify-content-end(id='navbarCollapse')
             ul.navbar-nav.text-right
-               li.nav-item.active
-                  a.nav-link(href='#') Trips
+               router-link(to="/dashboard")
+                  li.nav-item.active
+                     a.nav-link Trips
                li.nav-item.active
                   a.nav-link(href='#') Profile
                li.nav-item
