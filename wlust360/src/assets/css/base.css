@@ -91,8 +91,17 @@
    height: 100px;
 }
 
+.local-img {
+   margin-top: 5px;
+}
+
+.card-container {
+   margin: auto;
+   width: 75%;
+}
+
 .local-card-body {
-   height: 150px;
+   height: 80px;
    padding: 30px;
 }
 

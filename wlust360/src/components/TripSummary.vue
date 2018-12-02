@@ -66,7 +66,7 @@
             v-card(flat)
                v-card-text
                   h2(v-show="noCountry") No info could be found about this destination
-                  div.row
+                  div.row.card-container
                      div.col-4(v-for="local in locals")
                         LocalCard(v-bind:local="local")
 
@@ -91,7 +91,7 @@ export default {
       tabs : [
         { id: 0, name: 'Events and Todos', icon: 'map' },
         { id: 1, name: 'Finances', icon: 'credit_card' },
-        { id: 2, name: 'Health', icon: 'local_hospital' }
+        { id: 2, name: 'Local Info', icon: 'local_hospital' }
       ],
       plans: [],
       ious: null,
@@ -206,19 +206,19 @@ export default {
       console.log('Current Trip Name ', this.currentTrip.title);
       const fire = {
         title: 'Local Fire Department',
-        imgSrc: 'assets/img/fire.png',
+        imgSrc: 'img/fire.png',
         number: this.country.fire || 'None found',
         color: 'danger'
       }
       const police = {
         title: 'Local Police Department',
-        imgSrc: 'assets/img/police.png',
+        imgSrc: 'img/police.png',
         number: this.country.police || 'None found',
         color: 'warning'
       }
       const hospital = {
         title: 'Local Hospital',
-        imgSrc: 'assets/img/hospital.png',
+        imgSrc: 'img/hospital.png',
         number: this.country.hospital || 'None found',
         color: 'info'
       }
