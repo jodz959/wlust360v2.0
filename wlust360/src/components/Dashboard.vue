@@ -83,6 +83,10 @@ export default {
           this.fetchTrips()
         } else {
            console.log('STAT RETURNED', res.status)
+           this.$router.push({
+             name: 'Login',
+             query: { st: 'unauthorized' }
+           })
         }
       }).catch(err => {
          console.log(err)
