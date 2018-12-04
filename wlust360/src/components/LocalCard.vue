@@ -1,11 +1,9 @@
 <template lang="pug">
    .card-text-white.mb-3.trip-card(:class="'bg-' + local.color")
-      .card-header.trip-card-title.local-card-header {{ local.title }}
-      img.local-img(:src="getUrl(local.imgSrc)")
-      .card-body.local-card-body
+      .card-header.trip-card-title.local-card-header
+         img.local-img(:src="getUrl(local.imgSrc)")
+         h4 {{ local.title }}
          h2.title.local-card-number {{ local.number }}
-         p.card-text
-            | {{ local.text }}
 </template>
 <script>
 

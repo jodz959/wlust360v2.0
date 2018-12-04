@@ -2,7 +2,8 @@
    div
       NavbarAuth(v-bind:username="user.fName")
       div.container
-         h2(v-show="noTrips") Add your first trip!
+         div(v-show="noTrips") 
+            h2 Add your first trip!
          v-dialog(model="dialog" width="700")
             v-btn(slot="activator" color="red lighten-2" dark) Add a Trip
             v-card
@@ -91,7 +92,7 @@ export default {
       }).catch(err => {
          console.log(err)
          if (err.response) {
-           if (err.response.data.status === 500) {
+           if (err.response.status === 500) {
              this.$router.push({
                name: 'Login',
                query: { st: 'unauthorized' }

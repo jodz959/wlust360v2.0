@@ -67,9 +67,13 @@
             v-card(flat)
                v-card-text
                   h2(v-show="noCountry") No info could be found about this destination
-                  div.row.card-container
-                     div.col-4(v-for="local in locals")
-                        LocalCard(v-bind:local="local")
+                  v-expansion-panel(v-model="panel" expand)
+                     v-expansion-panel-content(v-for="(item, i) in 1" :key="i")
+                        div(slot="header") Important Local Numbers
+                        v-card
+                           div.card-group.card-container
+                              div.col-lg-4(v-for="local in locals")
+                                 LocalCard(v-bind:local="local")
 
 </template>
 
@@ -116,6 +120,7 @@ export default {
           icon: 'mdi-buffer'
         }
       ],
+      panel: [true],
       planForm: {
          title: '',
          date: '',
@@ -222,19 +227,19 @@ export default {
 
       console.log('Current Trip Name ', this.currentTrip.title);
       const fire = {
-        title: 'Local Fire Department',
+        title: 'Fire Department',
         imgSrc: 'img/fire.png',
         number: this.country.fire || 'None found',
         color: 'danger'
       }
       const police = {
-        title: 'Local Police Department',
+        title: 'Police Department',
         imgSrc: 'img/police.png',
         number: this.country.police || 'None found',
         color: 'warning'
       }
       const hospital = {
-        title: 'Local Hospital',
+        title: 'Hospital Emergency',
         imgSrc: 'img/hospital.png',
         number: this.country.hospital || 'None found',
         color: 'info'

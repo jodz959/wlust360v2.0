@@ -1,5 +1,5 @@
 <template lang="pug">
-   router-link(:to="{ name: 'TripSummary', params: { trip: trip.slug } }")
+   router-link.card-link(:to="{ name: 'TripSummary', params: { trip: trip.slug } }")
       .card-text-white.bg-success.mb-3.trip-card(@click="redirect(trip)")
          .card-header.trip-card-title {{ trip.title }}
          .card-body

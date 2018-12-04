@@ -13,7 +13,7 @@ const validateToken = (req, res, next) => {
    const token = req.headers['x-access-token'];
    if (token) {
       jwt.verify(token, secret, (err, decoded) => {
-         if(err) {
+         if(err) { //token expired
             return res.status(500).json({ auth: false, success: false, message: "Auth failed"});
          }
       
