@@ -28,7 +28,7 @@
             div.link-div
                router-link.links(to="/login") Login
                span |
-               a.links(href="forgot-password") Forgot Password
+               a.links(href="#") Forgot Password
 
          div.credit
             | Icons made by
