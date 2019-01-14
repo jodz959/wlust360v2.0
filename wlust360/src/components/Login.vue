@@ -4,13 +4,14 @@
       div.register-form
          div.layout-title
             h2 Login
-            div.errors(v-if="errors.length")
-               img(src="./../assets/warning.png")
-               p
-                  b Please correct the following:
-                  div.error-text
-                     ul.error-ul
-                        li(v-for="error in errors") {{ error }}
+            div
+               div.errors(v-if="errors.length")
+                  img(src="./../assets/warning.png")
+                  p
+                     b Please correct the following:
+                     div.error-text
+                        ul.error-ul
+                           li(v-for="error in errors") {{ error }}
             div.error-msg(v-if="message")
                h4 {{ message }}
             form.login(@submit="checkErrors" novalidate="true" method="POST")

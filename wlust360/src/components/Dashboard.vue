@@ -1,47 +1,51 @@
 <template lang="pug">
    div
       NavbarAuth(v-bind:username="user.fName")
-      div.container
-         div(v-show="noTrips") 
-            h2 Add your first trip!
-         v-dialog(model="dialog" width="700")
-            v-btn(slot="activator" color="red lighten-2" dark) Add a Trip
-            v-card
-               v-card-title(class="headline cyan lighten-2") Trip Basics
-               div
-                  div.errors(v-if="errors.length")
-                     img(src="./../assets/warning.png")
-                     p
-                        b Please correct the following:
-                        div.error-text
-                           ul.error-ul
-                              li(v-for="error in errors") {{ error }} 
-                  form.login(v-on:submit.prevent="addTrip" novalidate="true" method="POST")
-                     input.text-input.input-box(v-model="tripForm.title" name="title" placeholder="Title" type="text" required)
-                     br
-                     input.text-input.input-box(v-model="tripForm.dest" name="dest" placeholder="Destination" type="text" required)
-                     br
-                     label Start Date
-                     br
-                     v-menu.text-input.input-box(:close-on-content-click="false" v-model="menuStart" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px")
-                        v-text-field(slot="activator" v-model="tripForm.start" prepend-icon="event" readonly)
-                        v-date-picker(v-model="tripForm.start" color="teal lighten-2" @input="menuStart = false" actions) 
-                     br
-                     label End Date
-                     br
-                     v-menu.text-input.input-box(:close-on-content-click="false" v-model="menuEnd" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px")
-                        v-text-field(slot="activator" v-model="tripForm.end" prepend-icon="event" readonly)
-                        v-date-picker(v-model="tripForm.end" color="teal lighten-2" @input="menuStart = false" actions)
-                     br
-                     button.btn-lgn.btn.btn-success(type="submit") Add Trip
-                     br
-         div(v-for="trip in trips")
-            Trip(v-bind:trip="trip")
+      Sidebar(v-bind:username="user.fName")
+      v-content
+         v-layout(justify-center)
+            v-container
+               div(v-show="noTrips") 
+                  h2 Add your first trip!
+               v-dialog(model="dialog" width="700")
+                  v-btn(slot="activator" color="red lighten-2" dark) Add a Trip
+                  v-card
+                     v-card-title(class="headline cyan lighten-2") Trip Basics
+                     div
+                        div.errors(v-if="errors.length")
+                           img(src="./../assets/warning.png")
+                           p
+                              b Please correct the following:
+                              div.error-text
+                                 ul.error-ul
+                                    li(v-for="error in errors") {{ error }} 
+                        form.login(v-on:submit.prevent="addTrip" novalidate="true" method="POST")
+                           input.text-input.input-box(v-model="tripForm.title" name="title" placeholder="Title" type="text" required)
+                           br
+                           input.text-input.input-box(v-model="tripForm.dest" name="dest" placeholder="Destination" type="text" required)
+                           br
+                           label Start Date
+                           br
+                           v-menu.text-input.input-box(:close-on-content-click="false" v-model="menuStart" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px")
+                              v-text-field(slot="activator" v-model="tripForm.start" prepend-icon="event" readonly)
+                              v-date-picker(v-model="tripForm.start" color="teal lighten-2" @input="menuStart = false" actions) 
+                           br
+                           label End Date
+                           br
+                           v-menu.text-input.input-box(:close-on-content-click="false" v-model="menuEnd" :nudge-right="40" lazy transition="scale-transition" offset-y full-width min-width="290px")
+                              v-text-field(slot="activator" v-model="tripForm.end" prepend-icon="event" readonly)
+                              v-date-picker(v-model="tripForm.end" color="teal lighten-2" @input="menuStart = false" actions)
+                           br
+                           button.btn-lgn.btn.btn-success(type="submit") Add Trip
+                           br
+               div(v-for="trip in trips")
+                  Trip(v-bind:trip="trip")
 </template>
 
 <script>
 import axios from 'axios'
 import NavbarAuth from './NavbarAuth'
+import Sidebar from './Sidebar'
 import Trip from './Trip'
 import url from './../config/apiUrls'
 export default {
@@ -62,7 +66,7 @@ export default {
       noTrips: false
     }
   },
-  components: { NavbarAuth, Trip },
+  components: { NavbarAuth, Trip, Sidebar },
   created () { 
     console.log('BEFORE FUNCTION DATA RETURNED')
     this.fetchUser()
