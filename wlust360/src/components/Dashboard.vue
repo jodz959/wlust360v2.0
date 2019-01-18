@@ -1,7 +1,6 @@
 <template lang="pug">
    div
       NavbarAuth(v-bind:username="user.fName")
-      Sidebar(v-bind:username="user.fName")
       v-content
          v-layout(justify-center)
             v-container
