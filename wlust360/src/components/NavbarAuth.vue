@@ -1,6 +1,22 @@
 <template lang="pug">
    div
-      nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
+      v-toolbar(:fixed="true" color="white")
+         img.logo(src="./../assets/img/logo1.png")
+         v-spacer
+         v-toolbar-items
+            div(class="menu-link")
+               router-link(to="/dashboard")
+                  v-btn(flat) TRIPS
+            v-menu(transition="slide-y-transition" :open-on-hover="true" bottom offset-y)
+               v-avatar(slot="activator")
+                  img(src="./../assets/img/user_teal.png")
+               v-list
+                  v-list-tile(v-for="(item, i) in menuItems" :key="i" @click="check(item.title)")
+                     v-list-tile-title {{ item.title }}
+            div(class="menu-btn")
+               v-btn(small color="error" v-on:click="logout") LOGOUT
+
+      <!-- nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
          a.navbar-brand(href='/') WLUST 360
          p Welcome {{ username }}
          button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle Navigation'): span(class='navbar-toggler-icon')
@@ -13,7 +29,7 @@
                li.nav-item.active
                   a.nav-link(href='#') Profile
                li.nav-item
-                  a.btn.btn-secondary(v-on:click="logout") Logout
+                  a.btn.btn-secondary(v-on:click="logout") Logout -->
 </template>
 
 <script>
@@ -23,7 +39,20 @@ import url from './../config/apiUrls'
 export default {
   name: 'NavbarAuth',
   props: ['username'],
+  data() {
+    return  {
+      menuItems: [
+        { title: 'Profile' },
+        { title: 'Trips' },
+        { title: 'Settings' },
+        { title: 'Logout' }
+      ]
+    }
+  },
   methods: {
+    check: function(title) {
+      console.log(title)
+    },
     logout: function () {
       const config = {
         headers: {
