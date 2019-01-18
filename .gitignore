@@ -1,5 +1,6 @@
 *.swp
 *.swn
+*.swm
 node_modules
 config.js
 *.swo
