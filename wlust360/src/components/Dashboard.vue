@@ -6,7 +6,9 @@
             v-container
                div(v-show="noTrips") 
                   h2 Add your first trip!
-               v-dialog(model="dialog" width="700")
+               AddTripButton
+               //- 
+                  v-dialog(model="dialog" width="700")
                   v-btn(slot="activator" color="red lighten-2" dark) Add a Trip
                   v-card
                      v-card-title(class="headline cyan lighten-2") Trip Basics
@@ -37,6 +39,7 @@
                            br
                            button.btn-lgn.btn.btn-success(type="submit") Add Trip
                            br
+                        //
                div(v-for="trip in trips")
                   Trip(v-bind:trip="trip")
 </template>
@@ -46,6 +49,7 @@ import axios from 'axios'
 import NavbarAuth from './NavbarAuth'
 import Sidebar from './Sidebar'
 import Trip from './Trip'
+import AddTripButton from './AddTripButton'
 import url from './../config/apiUrls'
 export default {
   name: 'Dashboard',
@@ -65,7 +69,7 @@ export default {
       noTrips: false
     }
   },
-  components: { NavbarAuth, Trip, Sidebar },
+  components: { NavbarAuth, Trip, Sidebar, AddTripButton },
   created () { 
     console.log('BEFORE FUNCTION DATA RETURNED')
     this.fetchUser()
