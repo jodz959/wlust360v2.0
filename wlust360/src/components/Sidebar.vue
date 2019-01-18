@@ -4,7 +4,7 @@
          v-list(class="pa-0")
             v-list-tile(avatar)
                v-list-tile-avatar
-                  img(src="#")
+                  img(src="./../assets/img/user_teal.png")
                v-list-tile-content
                   v-list-tile-title {{ username }}
                v-list-tile-action
