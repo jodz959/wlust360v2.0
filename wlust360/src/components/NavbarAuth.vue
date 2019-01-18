@@ -2,38 +2,22 @@
    div
       v-toolbar(:fixed="true" color="white")
          img.logo(src="./../assets/img/logo1.png")
+         router-link(to="/dashboard")
+            v-btn(flat) MY TRIPS
+         AddTripButton
          v-spacer
          v-toolbar-items
-            div(class="menu-link")
-               router-link(to="/dashboard")
-                  v-btn(flat) TRIPS
-            v-menu(transition="slide-y-transition" :open-on-hover="true" bottom offset-y)
+            v-menu(transition="slide-y-transition" :open-on-hover="true" bottom :offset-y="true" min-width=200)
                v-avatar(slot="activator")
                   img(src="./../assets/img/user_teal.png")
                v-list
                   v-list-tile(v-for="(item, i) in menuItems" :key="i" @click="check(item.title)")
                      v-list-tile-title {{ item.title }}
-            div(class="menu-btn")
-               v-btn(small color="error" v-on:click="logout") LOGOUT
-
-      <!-- nav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
-         a.navbar-brand(href='/') WLUST 360
-         p Welcome {{ username }}
-         button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarCollapse' aria-controls='navbarCollapse' aria-expanded='false' aria-label='Toggle Navigation'): span(class='navbar-toggler-icon')
-
-         .collapse.navbar-collapse.justify-content-end(id='navbarCollapse')
-            ul.navbar-nav.text-right
-               router-link(to="/dashboard")
-                  li.nav-item.active
-                     a.nav-link Trips
-               li.nav-item.active
-                  a.nav-link(href='#') Profile
-               li.nav-item
-                  a.btn.btn-secondary(v-on:click="logout") Logout -->
 </template>
 
 <script>
 import axios from 'axios'
+import AddTripButton from './AddTripButton'
 import url from './../config/apiUrls'
 
 export default {
@@ -43,15 +27,23 @@ export default {
     return  {
       menuItems: [
         { title: 'Profile' },
-        { title: 'Trips' },
+        { title: 'Favroite Trips' },
         { title: 'Settings' },
+        { title: 'Help' },
         { title: 'Logout' }
       ]
     }
   },
+  components: { AddTripButton },
   methods: {
     check: function(title) {
-      console.log(title)
+      const result = this.menuItems.find(item => item.title === title);
+      if (result !== undefined) {  //in the list of items
+        let fn = title.split(' ');
+        fn = fn.join('').toLowerCase();
+        this[fn]();
+        console.log(title)
+      }
     },
     logout: function () {
       const config = {
